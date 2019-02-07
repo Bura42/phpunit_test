@@ -4,73 +4,69 @@ use PHPUnit\Framework\TestCase;
 
 class UserTest extends TestCase
 {
+    protected $user;
+
     public function setUp()
     {
-     var_dump('1');
+        $this->user = new \App\Models\User;
     }
 
     public function testThatWeCanGetTheFirstName()
     {
 
-        $user = new \App\Models\User;
+        $this->user->setFirstName('Billy');
 
-        $user->setFirstName('Billy');
-
-        $this->assertEquals($user->getFirstName(), 'Billy');
+        $this->assertEquals($this->user->getFirstName(), 'Billy');
     }
 
     public function testThatWeCanGetTheLastName()
     {
 
-        $user = new \App\Models\User;
 
-        $user->setLastName('Owl');
 
-        $this->assertEquals($user->getLastName(), 'Owl');
+        $this->user->setLastName('Owl');
+
+        $this->assertEquals($this->user->getLastName(), 'Owl');
     }
 
 
     public function testFullNameIsReturned()
     {
-        $user = new \App\Models\User;
 
-        $user->setFirstName('Billy');
-        $user->setLastName('Owl');
+        $this->user->setFirstName('Billy');
+        $this->user->setLastName('Owl');
 
-        $this->assertEquals($user->getFullName(), 'Billy Owl');
+        $this->assertEquals($this->user->getFullName(), 'Billy Owl');
     }
 
     public function testFirstAndLastNameAreTrimmed()
     {
-        $user = new \App\Models\User;
 
-        $user->setFirstName('Billy');
-        $user->setLastName('       Owl');
 
-        $this->assertEquals($user->getFirstName(), 'Billy');
-        $this->assertEquals($user->getLastName(), 'Owl');
+        $this->user->setFirstName('Billy');
+        $this->user->setLastName('       Owl');
+
+        $this->assertEquals($this->user->getFirstName(), 'Billy');
+        $this->assertEquals($this->user->getLastName(), 'Owl');
     }
 
 
     public function testEmailAddressCanBeSet()
     {
 
-        $user = new \App\Models\User;
+        $this->user->setEmail('Billy@codecourse.com');
 
-        $user->setEmail('Billy@codecourse.com');
-
-        $this->assertEquals($user->getEmail(), 'Billy@codecourse.com');
+        $this->assertEquals($this->user->getEmail(), 'Billy@codecourse.com');
     }
 
     public function testEmailVariablesContainCorrectValues()
     {
-        $user = new \App\Models\User;
 
-        $user->setFirstName('Billy');
-        $user->setLastName('Owl');
-        $user->setEmail('Billy@codecourse.com');
+        $this->user->setFirstName('Billy');
+        $this->user->setLastName('Owl');
+        $this->user->setEmail('Billy@codecourse.com');
 
-        $emailVariables = $user->getEmailVariables();
+        $emailVariables = $this->user->getEmailVariables();
 
         $this->assertArrayHasKey('email', $emailVariables);
 
