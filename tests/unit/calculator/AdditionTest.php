@@ -4,8 +4,6 @@ use PHPUnit\Framework\TestCase;
 
 class AdditionTest extends TestCase
 {
-
-
     /** @test */
 
     public function adds_up_given_operands()

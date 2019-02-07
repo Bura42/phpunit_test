@@ -4,10 +4,6 @@ use PHPUnit\Framework\TestCase;
 
 class DivisionTest extends TestCase
 {
-
-
-    /** @test */
-
     /** @test */
     public function divides_given_operands()
     {
